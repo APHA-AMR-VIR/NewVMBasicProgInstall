@@ -149,15 +149,6 @@ function mount-s3bucket()
 }
 
 
-# Completion message
-function completion-message()
-{
-    clear
-    echo "Installation of software suite is now complete."
-    echo ""
-    echo "Please reboot when convenient to see all your newly installed programs."
-}
-
 install-mambaforge
 install-biocondatools
 install-aphaseqfinder
@@ -171,4 +162,3 @@ install-libreoffice
 install-filezilla
 install-RandRStudio
 mount-s3bucket
-completion-message
