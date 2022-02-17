@@ -1,18 +1,18 @@
 #!/bin/bash
 # name is installviaconda.sh
-# Check to see if Miniforge is installed and if not, install it
-function install-miniforge()
+# Check to see if Mambaforge is installed and if not, install it
+function install-mambaforge()
 {
     if [ -f ~/conda.installed ]; then
         echo "Conda already installed, skipping"
     else
-        curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-	sh Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
-	echo 'export PATH="$HOME/miniforge/bin:$PATH"' >> ~/.profile
-	rm Miniforge3-Linux-x86_64.sh
+        curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+	sh Mambaforge-Linux-x86_64.sh -b -p $HOME/mambaforge
+	echo 'export PATH="$HOME/mambaforge/bin:$PATH"' >> ~/.profile
+	rm Mambaforge-Linux-x86_64.sh
 	source ~/.profile
-	conda init bash
-	echo "Miniforge has been installed" > ~/conda.installed
+	mamba init bash
+	echo "Mambaforge has been installed" > ~/conda.installed
 	clear
 	echo "I'm about to reboot, please re-run script after reboot."
 	sudo reboot
@@ -24,13 +24,13 @@ function install-miniforge()
 function install-condatools()
 {
     # Create a python 3.6 environment as some tools (primarily Gubbins) are not compatible with python 3.8
-    conda create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash unicycler
+    mamba create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash unicycler
     # This is a fix for Prokka
-    conda env config vars set PERL5LIB=$HOME/miniconda/lib/perl5/site_perl/5.22.0/ -n base
+    mamba env config vars set PERL5LIB=$HOME/miniconda/lib/perl5/site_perl/5.22.0/ -n base
     # Set py36 environment as the default environment
-    echo "conda activate py36" >> ~/.bashrc
+    echo "mamba activate py36" >> ~/.bashrc
     # Create a python 2.7 environment for the tools that are not compatible with python 3
-    conda create -n py27 -y -c conda-forge -c bioconda -c defaults python=2.7 quast srst2
+    mamba create -n py27 -y -c conda-forge -c bioconda -c defaults python=2.7 quast srst2
 }
 
 
@@ -147,7 +147,7 @@ function mount-s3bucket()
 }
 
 
-install-miniforge
+install-mambaforge
 install-condatools
 install-aphaseqfinder
 install-goofys
