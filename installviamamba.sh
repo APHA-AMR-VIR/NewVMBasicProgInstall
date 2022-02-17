@@ -157,7 +157,7 @@ function completion-message()
 # Mount S3 bucket
 function mount-s3bucket()
 {
-    echo "This is where you can mount an S3 bucket, if you don't want to do this at this time press Ctrl-C."
+    echo "If you wish you can now specify an S3 bucket to mount, if you don't want to do this at this time press Ctrl-C."
     read -p "S3 bucket to mount: " S3BUCKET
     mkdir -p ~/mnt/$S3BUCKET
     echo -e "goofys $S3BUCKET ~/mnt/$S3BUCKET" >> ~/.bashrc
