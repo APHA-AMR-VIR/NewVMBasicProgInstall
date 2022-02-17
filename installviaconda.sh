@@ -1,18 +1,18 @@
 #!/bin/bash
 # name is installviaconda.sh
-# Check to see if Miniconda is installed and if not, install it
-function install-miniconda()
+# Check to see if Miniforge is installed and if not, install it
+function install-miniforge()
 {
     if [ -f ~/conda.installed ]; then
         echo "Conda already installed, skipping"
     else
-        curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-	sh Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
-	echo 'export PATH="$HOME/miniconda/bin:$PATH"' >> ~/.profile
-	rm Miniconda3-latest-Linux-x86_64.sh
+        curl -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+	sh Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
+	echo 'export PATH="$HOME/miniforge/bin:$PATH"' >> ~/.profile
+	rm Miniforge3-Linux-x86_64.sh
 	source ~/.profile
 	conda init bash
-	echo "Miniconda has been installed" > ~/conda.installed
+	echo "Miniforge has been installed" > ~/conda.installed
 	clear
 	echo "I'm about to reboot, please re-run script after reboot."
 	sudo reboot
@@ -147,7 +147,7 @@ function mount-s3bucket()
 }
 
 
-install-miniconda
+install-miniforge
 install-condatools
 install-aphaseqfinder
 install-goofys
