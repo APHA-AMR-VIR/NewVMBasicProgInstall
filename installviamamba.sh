@@ -1,10 +1,10 @@
 #!/bin/bash
-# name is installviaconda.sh
+# name is installviamamba.sh
 # Check to see if Mambaforge is installed and if not, install it
 function install-mambaforge()
 {
-    if [ -f ~/conda.installed ]; then
-        echo "Conda already installed, skipping"
+    if [ -f ~/mamba.installed ]; then
+        echo "Mamba already installed, skipping"
     else
         curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
 	sh Mambaforge-Linux-x86_64.sh -b -p $HOME/mambaforge
@@ -12,7 +12,7 @@ function install-mambaforge()
 	rm Mambaforge-Linux-x86_64.sh
 	source ~/.profile
 	mamba init bash
-	echo "Mambaforge has been installed" > ~/conda.installed
+	echo "Mambaforge has been installed" > ~/mamba.installed
 	clear
 	echo "I'm about to reboot, please re-run script after reboot."
 	sudo reboot
@@ -20,10 +20,10 @@ function install-mambaforge()
 }
 
 
-# Install as much as i can via conda
-function install-condatools()
+# Install as much as i can via bioconda
+function install-biocondatools()
 {
-    # Create a python 3.6 environment as some tools (primarily Gubbins) are not compatible with python 3.8
+    # Create a python 3.6 environment as some tools (primarily Gubbins) are not compatible with newer Python versions
     mamba create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash unicycler
     # This is a fix for Prokka
     mamba env config vars set PERL5LIB=$HOME/miniconda/lib/perl5/site_perl/5.22.0/ -n base
@@ -148,7 +148,7 @@ function mount-s3bucket()
 
 
 install-mambaforge
-install-condatools
+install-biocondatools
 install-aphaseqfinder
 install-goofys
 install-ugene
