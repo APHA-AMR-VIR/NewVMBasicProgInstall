@@ -14,7 +14,7 @@ function install-mambaforge()
 	mamba init bash
 	echo "Mambaforge has been installed" > ~/mamba.installed
 	clear
-	echo "I'm about to reboot, please re-run script after reboot."
+	echo "I'm about to reboot, please re-run script after reboot (Ctrl+C to exit script and cancel reboot)."
 	sudo reboot
     fi
 }
