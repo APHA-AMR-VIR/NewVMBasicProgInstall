@@ -6,7 +6,7 @@ function install-miniforge()
     if [ -f ~/conda.installed ]; then
         echo "Conda already installed, skipping"
     else
-        curl -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+        curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
 	sh Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
 	echo 'export PATH="$HOME/miniforge/bin:$PATH"' >> ~/.profile
 	rm Miniforge3-Linux-x86_64.sh
