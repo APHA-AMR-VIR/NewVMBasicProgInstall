@@ -138,16 +138,26 @@ function install-RandRStudio()
 }
 
 
+# Completion message
+function completion-message()
+{
+    clear
+    echo "All your software packages are installed now. Please reboot before you try to use them."
+    echo ""
+    echo ""
+    echo ""
+    echo ""
+}
+
+
 # Mount S3 bucket
 function mount-s3bucket()
 {
-    clear
     echo "This is where you can mount an S3 bucket, if you don't want to do this at this time press Ctrl-C."
     read -p "S3 bucket to mount: " S3BUCKET
     mkdir -p ~/mnt/$S3BUCKET
     echo -e "goofys $S3BUCKET ~/mnt/$S3BUCKET" >> ~/.bashrc
 }
-
 
 install-mambaforge
 install-biocondatools
@@ -161,4 +171,5 @@ install-spider
 install-libreoffice
 install-filezilla
 install-RandRStudio
+completion-message
 mount-s3bucket
