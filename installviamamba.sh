@@ -142,9 +142,11 @@ function install-RandRStudio()
 function completion-message()
 {
     clear
-    echo "All your software packages are installed now. Please reboot before you try to use them."
     echo ""
     echo ""
+    echo "*******************************************************************************************"
+    echo "* All your software packages are installed now. Please reboot before you try to use them. *"
+    echo "*******************************************************************************************"
     echo ""
     echo ""
 }
