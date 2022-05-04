@@ -26,7 +26,7 @@ function install-mambaforge()
 function install-biocondatools()
 {
     # Create a python 3.6 environment as some tools (primarily Gubbins) are not compatible with newer Python versions
-    mamba create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash unicycler
+    mamba create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash spyder unicycler
     # This is a fix for Prokka
     mamba env config vars set PERL5LIB=$HOME/miniconda/lib/perl5/site_perl/5.22.0/ -n base
     # Set py36 environment as the default environment
@@ -91,17 +91,6 @@ function install-easyfig()
 function install-brig()
 {
     sudo apt-get update && sudo apt-get install -y brig
-}
-
-
-# Install SPIDER
-function install-spider()
-{
-    cd $HOME
-    wget http://www.bioinformatics.org/spider/SPIDER_WORK.tar.gz
-    tar -xvf SPIDER_WORK.tar.gz
-    echo 'PATH=$PATH:$HOME/SPIDER_WORK' >> ~/.profile
-    rm SPIDER_WORK.tar.gz
 }
 
 
@@ -171,7 +160,6 @@ install-ugene
 install-cgmlstfinder
 install-easyfig
 install-brig
-install-spider
 install-libreoffice
 install-filezilla
 install-RandRStudio
