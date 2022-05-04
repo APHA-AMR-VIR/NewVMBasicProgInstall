@@ -50,7 +50,6 @@ function install-goofys()
 {
     sudo wget  -P /usr/local/bin  https://github.com/kahing/goofys/releases/latest/download/goofys
     sudo chmod +x /usr/local/bin/goofys
-
 }
 
 
@@ -61,7 +60,6 @@ function install-ugene()
     sudo apt-get install -y ugene
     sudo apt-get install -y ugene-non-free
     sudo apt-get install -y ugene-data
-
 }
 
 
