@@ -25,7 +25,7 @@ function install-mambaforge()
 # Install as much as i can via bioconda
 function install-biocondatools()
 {
-    # Create a python 3.6 environment as some tools (primarily Gubbins) are not compatible with newer Python versions
+    # Create a python 3.6 environment as some tools (primarily Unicycler) are not compatible with newer Python versions
     mamba create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash spyder unicycler
     # This is a fix for Prokka
     mamba env config vars set PERL5LIB=$HOME/miniconda/lib/perl5/site_perl/5.22.0/ -n base
