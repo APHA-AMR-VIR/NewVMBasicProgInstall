@@ -69,7 +69,9 @@ function install-cgmlstfinder()
     cd $HOME
     git clone https://bitbucket.org/genomicepidemiology/cgmlstfinder.git
     sudo cp ~/cgmlstfinder/cgMLST.py /usr/local/bin
+    sudo chmod +x /usr/local/bin/cgMLST.py
     sudo cp ~/cgmlstfinder/make_nj_tree.py /usr/local/bin
+    sudo chmod +x /usr/local/bin/make_nj_tree.py
     rm -fr ~/cgmlstfinder
 }
 
