@@ -1,18 +1,18 @@
 #!/bin/bash
-# name is installviamamba.sh
-# Check to see if Mambaforge is installed and if not, install it
-function install-mambaforge()
+
+# Check to see if Miniforge is installed and if not, install it
+function install-miniforge()
 {
-    if [ -f ~/mamba.installed ]; then
-        echo "Mamba already installed, skipping"
+    if [ -f ~/miniforge.installed ]; then
+        echo "Miniforge already installed, skipping"
     else
-        curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-	sh Mambaforge-Linux-x86_64.sh -b -p $HOME/mambaforge
-	echo 'export PATH="$HOME/mambaforge/bin:$PATH"' >> ~/.profile
-	rm Mambaforge-Linux-x86_64.sh
+        wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+	bash Miniforge3.sh -b -p $HOME/conda
+	echo 'export PATH="$HOME/conda/bin:$PATH"' >> ~/.profile
+	rm Miniforge3.sh
 	source ~/.profile
-	mamba init bash
-	echo "Mambaforge has been installed" > ~/mamba.installed
+	conda init bash
+	echo "Miniforge has been installed" > ~/miniforge.installed
 	clear
 	echo ""
 	echo ""
@@ -152,7 +152,7 @@ function mount-s3bucket()
     echo -e "goofys $S3BUCKET ~/mnt/$S3BUCKET" >> ~/.bashrc
 }
 
-install-mambaforge
+install-miniforge
 install-biocondatools
 install-aphaseqfinder
 install-goofys
