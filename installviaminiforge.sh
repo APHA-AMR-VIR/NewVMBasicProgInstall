@@ -36,15 +36,6 @@ function install-biocondatools()
 }
 
 
-# Install APHASeqFinder
-function install-aphaseqfinder()
-{
-    cd $HOME
-    git clone https://github.com/APHA-AMR-VIR/APHASeqFinder
-    sudo ln -s $HOME/APHASeqFinder/seqfinder.py /usr/local/bin
-}
-
-
 # Install goofys
 function install-goofys()
 {
@@ -60,19 +51,6 @@ function install-ugene()
     sudo apt-get install -y ugene
     sudo apt-get install -y ugene-non-free
     sudo apt-get install -y ugene-data
-}
-
-
-# Install cgMLSTFinder
-function install-cgmlstfinder()
-{
-    cd $HOME
-    git clone https://bitbucket.org/genomicepidemiology/cgmlstfinder.git
-    sudo cp ~/cgmlstfinder/cgMLST.py /usr/local/bin
-    sudo chmod +x /usr/local/bin/cgMLST.py
-    sudo cp ~/cgmlstfinder/make_nj_tree.py /usr/local/bin
-    sudo chmod +x /usr/local/bin/make_nj_tree.py
-    rm -fr ~/cgmlstfinder
 }
 
 
@@ -154,10 +132,8 @@ function mount-s3bucket()
 
 install-miniforge
 install-biocondatools
-install-aphaseqfinder
 install-goofys
 install-ugene
-install-cgmlstfinder
 install-easyfig
 install-brig
 install-libreoffice
