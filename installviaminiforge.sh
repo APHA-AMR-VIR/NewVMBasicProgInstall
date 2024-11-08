@@ -25,14 +25,14 @@ function install-miniforge()
 # Install as much as i can via bioconda
 function install-biocondatools()
 {
-    # Create a python 3.6 environment as some tools (primarily Unicycler) are not compatible with newer Python versions
-    mamba create -n py36 -y -c conda-forge -c bioconda -c defaults python=3.6 beagle beast clonalframeml clustalo fastqc gubbins kma mauve nullarbor raxml-ng scoary sistr_cmd sourmash spyder unicycler
+    # Create a python 3.10 environment as some tools (primarily Unicycler) are not compatible with newer Python versions
+    mamba create -n py310 -y -c conda-forge -c bioconda -c defaults python=3.10 clonalframeml clustalo fastqc gubbins kma raxml-ng panaroo sourmash spyder unicycler mashtree snippy snpEff=5.0 fastp snp-dists multiqc mlst abricate quastr
     # This is a fix for Prokka
     mamba env config vars set PERL5LIB=$HOME/miniconda/lib/perl5/site_perl/5.22.0/ -n base
-    # Set py36 environment as the default environment
-    echo "mamba activate py36" >> ~/.bashrc
+    # Set py310 environment as the default environment
+    echo "mamba activate py310" >> ~/.bashrc
     # Create a python 2.7 environment for the tools that are not compatible with python 3
-    mamba create -n py27 -y -c conda-forge -c bioconda -c defaults python=2.7 quast srst2
+    mamba create -n py27 -y -c conda-forge -c bioconda -c defaults python=2.7 srst2
 }
 
 
