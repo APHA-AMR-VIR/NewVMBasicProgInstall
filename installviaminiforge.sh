@@ -39,7 +39,7 @@ function install-biocondatools()
 # Install goofys
 function install-goofys()
 {
-    sudo wget  -P /usr/local/bin  https://github.com/kahing/goofys/releases/latest/download/goofys
+    sudo wget  -P /usr/local/bin  https://github.com/APHA-AMR-VIR/NewVMBasicProgInstall/blob/main/goofys
     sudo chmod +x /usr/local/bin/goofys
 }
 
